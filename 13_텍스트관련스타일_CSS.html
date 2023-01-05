@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>텍스트 관련 스타일</title>
+    <style>
+        #c {
+            color: blueviolet;
+            color: #ffc0cb;
+            color: rgb(0, 47, 255); /* rgb 컬러 범위는 0 ~ 255 */
+            color: rgba(0, 47, 255, 0.45);  /* a(alpa) : 투명도 */
+            color: hsl(200, 50%, 50%); /* h : 색상값(0~360), s : 채도 %, l : 명도 % */
+            color: hsla(200, 50%, 50%, 0.5);    /* a : 투명도 */
+        }
+        
+        #td1{text-decoration: underline;}
+        #td2{text-decoration: line-through;}
+        #td3{text-decoration: overline;}
+        #td4{text-decoration : none; color: black;}
+        /* 앵커태그 이용해서 생성한 문장의 밑줄을 없애주고 색을 검은색으로 변경*/
+        
+        #tt1{text-transform: uppercase;}
+        #tt2{text-transform: lowercase;}
+        #tt3{text-transform: capitalize;}
+
+        #ta1{text-align: justify;}
+        #ta2{text-align: right;}
+        #ta3{text-align: center;}
+
+        .shadow{
+            font-size: 50px; font-weight: 900;
+        }
+
+        #ts1{
+            color: orangered;
+            text-shadow: 5px 5px 5px yellow;
+        }
+
+        #ts2{
+            color: white;
+            text-shadow: 0px 0px 10px black;
+        }
+
+        #ts3{
+            text-shadow: 0px 0px 4px gray, 0px -5px 4px yellow, 0px -15px 14px orangered,
+                         0px -22px 19px red;
+            /* 그림자 중복 작성 가능 */
+        }
+    </style>
+</head>
+<body>
+    <h1>텍스트 관련 스타일(text~)</h1>
+
+    <h3>color : 텍스트의 색상을 지정</h3>
+    <pre id="c">
+        선택자 {
+            color : 색상명/16진수/rbg,rgba, hsl ...
+        }
+    </pre>
+    <hr>
+
+    <h3>text-decoration : 텍스트에 줄을 긋거나 줄을 없앨때 사용</h3>
+    <!-- 보통 줄을 없앨때 사용 -->
+    <pre>
+        선택자 {
+            text-decoration : none/underline/overline/line-through;
+        }
+    </pre>
+
+    <!-- ul>li#td$*3 -->
+    <ul>
+        <li id="td1">underline: 텍스트 영역 아래에 줄 긋기</li>
+        <li id="td2">line-through : 텍스트 영역 중간에 줄 긋기</li>
+        <li id="td3">overline : 텍스트 영역 위에 줄 긋기</li>
+    </ul>
+
+    <a href="https://www.naver.com" id="td4">네이버로 가자</a>
+
+    <br>
+    <hr>
+
+    <h3>text-transform : 영문 텍스트의 대소문자 변환 시 사용</h3>
+    <pre>
+        선택자 {
+            text-transform: uppercase/lowercase/capitalize;
+        }
+    </pre>
+
+    <hr>
+
+    <!-- ul>li#tt$*3 -->
+    <ul>
+        <li id="tt1">uppercasse : 모든 영문자를 대문자로 변경</li>
+        <li id="tt2">lowercase : 모든 영문자를 소문자로 변경</li>
+        <li id="tt3">capitalize : 영문자의 첫글자만 대문자로</li>
+    </ul>
+
+    <hr>
+
+    <h3>text-align : 텍스트를 정렬할 때 사용</h3>
+    <pre>
+        선택자 {
+            text-align : left(기본값)/justify(양쪽정렬)/right/center(가운데정렬);
+        }
+    </pre>
+
+    <h4>양쪽정렬</h4>
+    <p id="ta1">
+        오직 이 눈이 실로 것이다. 사라지지 끝에 기쁘며, 사랑의 같으며, 군영과 굳세게 가는 듣는다. 역사를 황금시대를 없으면, 아름다우냐? 보이는 안고, 얼마나 듣기만 역사를 이상을 무엇이 튼튼하며, 부패뿐이다. 발휘하기 위하여, 바이며, 때에, 든 꾸며 천고에 뼈 피다. 가치를 우리 이것은 있음으로써 것이다. 그들을 많이 노래하며 거선의 남는 더운지라 위하여 얼음에 그리하였는가? 얼음이 피고 희망의 가장 꽃이 무엇을 뭇 산야에 것은 봄바람이다. 설산에서 위하여, 생생하며, 봄날의 끓는 날카로우나 길을 우리의 약동하다. 인간의 생의 피에 사람은 그들에게 것은 사막이다.
+
+        피가 긴지라 인도하겠다는 몸이 위하여 위하여 이상은 있는 아니다. 풍부하게 위하여, 반짝이는 바로 기관과 거선의 없는 부패뿐이다. 천고에 하는 구하지 속잎나고, 운다. 어디 보는 봄날의 거친 원대하고, 그들의 석가는 열매를 있다. 무엇이 피고 피부가 할지라도 풀이 구하지 끝까지 것이다. 소리다.이것은 들어 가슴이 칼이다. 영락과 없으면 작고 끓는 긴지라 어디 사람은 같은 피는 것이다. 고동을 투명하되 미묘한 이 사람은 쓸쓸한 같은 튼튼하며, 있는 봄바람이다. 가진 그러므로 주며, 있는 가치를 인간이 인간의 있으랴? 우리의 보이는 무엇을 넣는 목숨을 충분히 피다.
+        
+        얼음에 그들은 청춘의 그림자는 피다. 용감하고 타오르고 위하여서, 그들의 보이는 눈이 사막이다. 것은 이상의 가는 소리다.이것은 할지라도 이상은 청춘을 것이다. 것은 그들을 얼음과 이것이다. 설산에서 관현악이며, 속잎나고, 따뜻한 구할 주는 새가 동력은 끓는다. 이상은 있는 없으면 부패를 그들의 우리 위하여 청춘의 약동하다. 주며, 있는 하는 것이다. 같은 인생에 뛰노는 희망의 커다란 이것이다. 사랑의 얼마나 있을 목숨이 끓는다. 모래뿐일 갑 대중을 피는 그들은 바이며, 있으랴? 대중을 뛰노는 얼마나 끓는 발휘하기 이상의 이상은 힘차게 실로 철환하였는가?
+    </p>
+
+    <h4>오른쪽 정렬</h4>
+    <p id="ta2">
+        동력은 얼음 위하여 인간이 소금이라 청춘 그들의 트고, 듣는다. 되려니와, 방지하는 평화스러운 위하여서. 얼마나 피가 것은 청춘의 앞이 이상은 그들은 위하여서. 있는 따뜻한 되려니와, 주는 구하지 꾸며 황금시대다. 열락의 스며들어 가치를 만물은 같은 같지 뼈 보이는 밝은 있다. 따뜻한 그들은 발휘하기 가슴에 보는 가지에 말이다. 과실이 불어 커다란 투명하되 눈이 온갖 보라. 길지 뭇 없으면 있다. 같지 구하기 기쁘며, 우는 것이다. 앞이 청춘의 튼튼하며, 없으면 뿐이다.
+
+뭇 풍부하게 그들은 끓는 보라. 끝에 굳세게 인간에 생의 풀이 가치를 꽃이 있는 새가 끓는다. 같이 따뜻한 밥을 너의 청춘에서만 가슴에 그들은 것이다. 끓는 있는 너의 크고 끓는 구하지 없으면, 만물은 아름다우냐? 천자만홍이 같이, 바로 보내는 때문이다. 앞이 따뜻한 같은 우리는 천고에 청춘에서만 있다. 우리의 따뜻한 청춘의 것이다. 그러므로 수 무엇을 새 굳세게 평화스러운 대중을 할지라도 놀이 것이다. 원질이 그들의 뭇 열매를 주는 것이다.
+    </p>
+
+    <h4>가운데 정렬</h4>
+    <p id="ta3">
+        끓는 충분히 사랑의 별과 우리 칼이다. 이상, 힘차게 피가 더운지라 하였으며, 사막이다. 할지니, 사랑의 설산에서 별과 낙원을 칼이다. 이상이 곧 풍부하게 얼마나 어디 쓸쓸하랴? 것이 품에 그들은 보는 그와 것은 얼음이 이것을 거친 것이다. 그들은 많이 오아이스도 열락의 하는 우리는 힘있다. 피고 예수는 있는 피가 봄바람이다. 청춘의 없으면 천지는 인생에 불러 인간의 가슴에 물방아 무엇을 것이다. 청춘의 하는 만물은 이것을 우리의 힘있다. 얼음이 일월과 가치를 것은 노년에게서 맺어, 더운지라 운다. 꾸며 그들의 가는 칼이다.   
+    </p>
+
+    <hr>
+
+    <h3>test-shadow : 텍스트에 그림자효과를 줄 때 사용</h3>
+    <pre>
+        선택자 {
+            text-shadow : 가로거리(x) 세로거리(y) 번짐정도 색상;
+        }
+
+        - 번짐정도와 색상은 색량 가능
+        - 가로거리와 세로거리가 양수 일 경우 오른쪽 아래에 그림자 생성
+        - 가로거리와 세로거리가 음수 일 경우 왼쪽 위에 그림자 생성
+        - 번짐정도가 0 일 경우 그림자 색이 진하다.
+        - 색상은 기본값이 글자색과 같다.
+    </pre>
+
+    <div>
+        <!-- span.shadow#ts$*3 -->
+        <span class="shadow" id="ts1">HTML</span>   <br><br><br>
+        <span class="shadow" id="ts2">HTML</span>   <br><br><br>
+        <span class="shadow" id="ts3">HTML</span>
+    </div>
+</body>
+</html>

@@ -87,13 +87,50 @@ div[class=div-class][name~=name3]{
     /* background-color: deeppink; */
 }
 
+/* 4. 반응 선택자 ------------------------------------------ */
+.area {
+    background-color: yellowgreen;
+    width: 100px;
+    height: 100px;
+}
 
+#active-test{
+    cursor : pointer;
+    /* cursor : pointer; 이벤트가 부여된것을 알 수 있도록 커서의 모양을 바꿔줌. */
+}
 
+#active-test:active {
+    background-color: yellow;
+    color: red;
+    
+}
 
+#hover-test:hover {
+    cursor: pointer;
+    background-color: brown;
+    color: white;
+}
 
+/* 5. 상태 선택자 */
+/* 기본적으로 해당 선택된 요소 자체에 스타일 반영 */
+input[type=checkbox]:checked{
+    width:20px;
+    height: 20px;
+}
 
+input[type=checkbox]:checked+label{
+    font-size:20px;
+}
 
+/* input 요소중 name속성의 값이 user로 시작하는 요소를 선택한후 focus상태일때만 스타일 부여 */
+input[name^=user]:focus {
+    background-color: blue;
+}
 
+button:enabled{
+    background-color: fuchsia;
+}
 
-
-
+button:disabled{
+    background-color: indigo;
+}
