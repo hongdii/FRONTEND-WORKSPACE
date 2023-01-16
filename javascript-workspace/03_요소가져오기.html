@@ -81,7 +81,7 @@
             // document.getElementsByTagName("태그명")
             // => 선택된 여러개의 요소객체들은 배열에 담겨서 반환.
             // 자바스크립트에서 배열은 []로 표현됨.
-            let list = document.getElementsByTagName("li");
+            let list = document.getElementsByTagName("li"); // getElement"s"ByTagName 는 반환형이 배열임
             // [li요소객체, li요소객체, ...]
             let [a, b, c, d] = [0, "1", function (){console.log("테스트")}, 3];
             console.log(c)
@@ -147,8 +147,10 @@
 
             // let hobby2 = document.querySelectorAll("input[name=hobby]:checked");
 
+            // 반환값은 배열
             let checkedItem = "";
 
+            // 값을 꺼내기 위해서는 반복문 이용
             for(let i=0; i < hobby.length ; i++){
 
                 if(hobby[i].checked){
