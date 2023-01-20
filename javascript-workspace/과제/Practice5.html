@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice5</title>
+    <style>
+        fieldset{
+            width: 500px;
+        }
+        #d1{
+            text-align: center;
+        }
+        input[name=r]{
+            
+            margin-left: 30px;;
+
+        }
+        .area{
+            background-color: lightgray;
+            width: 530px;
+            height: 70px;
+        }
+        #area1>span {
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+        #area1>div>input{
+            margin: 0px 10px;
+            width: 400px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Practice5</h1>
+    <fieldset>
+        <legend align="center">검색할 항목을 선택하세요.</legend>
+        <div id="d1">
+            <!-- 다중선택 안되게하려면 name속성값 같게하기 -->
+            <input type="radio" name="r" id="title" onclick="titleS();"><span>제목</span>
+            <input type="radio" name="r" id="date" onclick="dateS();"><span>날짜</span>
+            <input type="radio" name="r" id="writer" onclick="id();"><span>작성자</span>
+        </div>
+    </fieldset>
+
+    <br>
+    <div id="area1" class="area">
+        <span>검색할 제목을 입력하세요 : </span><br>
+        <div><input id="i1"><button>검색</button></div>
+    </div>
+
+    <script>
+        let area1 = document.getElementById("area1");
+
+        function titleS(){
+            
+        }
+    </script>
+
+</body>
+</html>

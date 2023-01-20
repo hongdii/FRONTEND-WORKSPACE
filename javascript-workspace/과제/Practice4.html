@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice4</title>
+    <style>
+        /* input[name=range]{
+            
+        } */
+        fieldset{
+            width: 500px;
+        }
+        div{
+            border: 1px solid black;
+            width: 400px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Practice4</h1>
+    <fieldset>
+        <legend>구매 정보</legend>
+        <ul>
+            <li>구매자 : <input id="name" placeholder="구매자의 이름을 입력하세요"></li>
+            <li>상품명 : <input id="pname" placeholder="구매 상품 명을 입력하세요"></li> 
+            <li>가격 : <input id="price" placeholder="구매 가격을 입력하세요"></li>
+            <li>구매 수량 : <input id="amount" type="number" placeholder="최소 10." min="10" max="100" step="10"></li>
+            <li>납품 등급 : <input id="grade" name="range" type="range" min="1" max="9" step="2"></li>
+            <li>기타 사항 : <textarea id="other" name="content" cols="30" rows="10"></textarea></li>
+        </ul>
+    </fieldset>
+    <br>
+    <button id="btn1">입력 값 출력하기</button>
+    <br><br>
+    <div id="area1" class="area"> </div>
+    
+    <script>
+        let area1 = document.getElementById("area1");
+
+        document.getElementById("btn1").onclick = function (){
+            area1.innerHTML += "구매자 명 : "+ document.getElementById("name").value+"님<br>"
+                            + "상품 명 : "+document.getElementById("pname").value+"<br>"
+                            + "가격 : "+document.getElementById("price").value+"만원<br>"
+                            + "구매 수량 : "+document.getElementById("amount").value+"개<br>"
+                            + "납품등급 : "+document.getElementById("grade").value+"등급<br>"
+                            + "기타 사항 : "+document.getElementById("other").value+"<br>";
+        }
+    </script>
+</body>
+</html>
