@@ -73,7 +73,7 @@
             area1.innerHTML += "product['pName'] : "+product['pName']+"<br>";
             area1.innerHTML += "product['price'] : "+product['price']+"<br>";
             area1.innerHTML += "product['ingredient']"+product['ingredient']+"<br>";
-            area1.innerHTML += "product['$kind kind'] : "+product['$kind kind'] +"<br>";
+            area1.innerHTML += "product['$kind kind'] : "+product['@kind kind'] +"<br>";
         }
     </script>
 
@@ -123,6 +123,7 @@
                 language : "한국어지원",
                 supportOS : ["window32", "window64"],
                 service : true
+                // ,key: "dd"
             };
 
             for(let key in game){   // title, price, language, ...
@@ -158,7 +159,7 @@
             let cat = {
                 name:"코코",
                 kind:"브리티쉬숏헤어",
-                eat:function(food){
+                eat: function(food){
                     // area4.innerHTML += "eat 메소드가 호출되었습니다.";
                     // area4.innerHTML += food;
                     
@@ -166,6 +167,10 @@
                     area4.innerHTML += this.kind+"인 "+this.name+"가 "+this.food+"를 먹고 있어요<br>";
                     // 메소드 속성 내에 같은 객체 안의 속성을 호출할때는 this를 붙여서 제시
                 }
+                // 보통 화살표 함수로 사용됨.
+                // (food) => {
+                //     return area4.innerHTML += this.kind+"인 "+this.name+"가 "+this.food+"를 먹고 있어요<br>";
+                // }
             }
             cat.eat("츄르");
         }
