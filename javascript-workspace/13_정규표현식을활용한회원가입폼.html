@@ -5,51 +5,109 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        label{
+            font-size: 5px;
+            color: gray;
+        }
+    </style>
 </head>
 <body>
-    <form id="area1" class="area">
+    <form id="area1" class="area" action="insert.me">
         * 아이디 : <input type="text" id="userId" required>
         <br>
-        <label style="font-size: 5px; color: gray;">첫글자는 반드시 영문자로, 그리고 영문자, 숫자를 포함하여 총 4~12자로 입력하시오.</label>
+        <label>첫글자는 반드시 영문자로, 그리고 영문자, 숫자를 포함하여 총 4~12자로 입력하시오.</label>
         <br><br>
 
         * 비밀번호 : <input type="password" id="userPwd" required><br>
-        <label style="font-size: 5px; color: gray;">영문자, 숫자, 특수문자(!@#$%^)로 총 8~15자로 입력하시오.</label>
+        <label>영문자, 숫자, 특수문자(!@#$%^)로 총 8~15자로 입력하시오.</label>
         <br><br>
 
         * 비밀번호 확인 : <input type="password" id="checkPwd" required><br>
-        <label style="font-size: 5px; color: gray;">위의 비밀번호와 일치하게 입력하시오.</label>
+        <label>위의 비밀번호와 일치하게 입력하시오.</label>
         <br><br>
 
         * 이름 : <input type="text" id="name" required><br>
-        <label style="font-size: 5px; color: gray;">한글로만 이루어져야 하며 2글자 이상으로 입력하시오.</label>
+        <label>한글로만 이루어져야 하며 2글자 이상으로 입력하시오.</label>
         <br><br>
 
-        * 이메일 : <input type="email" id="name"><br>
-        <label style="font-size: 5px; color: gray;">이메일 형식에 맞춰서 입력하시오.</label>
+        * 이메일 : <input type="email" id="email"><br>
+        <label>이메일 형식에 맞춰서 입력하시오.</label>
         <br><br>
 
-        * 취미 : <input type="text" id="hobby" placeholder="축구, 농구, 야구, 독서 등"><br>
+        * 취미 : <input type="text" id="hobby" placeholder="축구, 농구, 야구, 독서 등" list="hobbyList"><br>
+        <datalist id="hobbyList">   
+            <option value="soccer">축구</option>
+            <option value="basketball">농구</option>
+            <option value="baseball">야구</option>
+            <option value="reading">독서</option>
+        </datalist>
         <br>
 
-        * 거주지 : <select>
+        * 거주지 : <select name="address" id="address">
                         <option value="s" selected>서울</option>
                         <option value="g">경기도</option>
-                        <option value="other">기타</option>
+                        <option value="i">인천</option>
                 </select><br>
         <br>
-        <button onclick="signUp();">회원가입</button> <input type="reset" value="취소">
+        <button onclick="return signUp();">회원가입</button>
+        <!-- button태그의 기본이벤트가 있는데 정규표현식에 적합하지 않은 값을
+            사용자가 입력했을때 if문안에서 return false 해줘서 기본이벤트를 막아준다
+            즉, 회원가입 버튼을 눌렀을때 기본이벤트(연결된 다른창)을 막아줌 -->
+        <input type="reset" value="취소">
+        <!-- 기본이벤트 실행 막아주기 위해 return 사용 -->
     </form>
     
     <script>
+        // 유효성 검사 : 사용자가 입력한 값들이 유효한 값들인지 확인
         function signUp(){
-            let area1 = document.getElementById("area1");
-            let regExp = /^[a-zA-z][a-zA-z0-9]{4,12}/;
+
+            // 유효성 검사 목록 : id, password, name
+
+            // input 요소 객체들 가져다 놓기
+            let userId = document.getElementById("userId");
+            let userPwd = document.getElementById("userPwd");
+            let checkPwd = document.getElementById("checkPwd");
+            let name = document.getElementById("name");
             
-            if(!regExp.test(document.getElementById("userId").value)){
+            // 1) 아이디 값 검사
+            // 첫글자 영문자, 영문자, 숫자로만 총 4~12글자로 이루어져야한다.
+            let regExp = /^[a-zA-z][a-zA-z0-9]{3,11}/;
+            
+            if(!regExp.test(userId.value)){
                 alert("아이디를 잘못입력하셨습니다.\n다시 입력하세요.");
+                userId.select(); // 커서가 아이디 입력창으로 이동
+                return false; // 가장 중요. 
             }
 
+            // 2) 비밀번호 검사
+            // 영문자(대소문자), 숫자, 특수문자로 이루어진 총 8~15글자
+            // 기존 regExp에 정규표현식 덮어씌우기
+            regExp = /^[a-z0-9!@#$%^]{8,15}$/i;
+
+            if(!regExp.test(userPwd.value)){
+                alert("유효한 비밀번호를 입력하시오.");
+                userPwd.value="";   // 빈칸으로 만들어줌
+                userPwd.select();
+                return false;
+            }
+
+            // 3) 비밀번호 일치 확인
+            if(userPwd.value !== checkPwd.value){
+                alert("동일한 비밀번호를 입력하시오.");
+                checkPwd.value="";
+                checkPwd.select();
+                return false;
+            }
+
+            // 4) 이름검사
+            //  한글(결합)로만 2글자이상
+            regExp = /^[가-힣]{2,}$/; // 가-힣 : 모든 이름 결합
+            if(!regExp.test(name.value)){
+                alert("유효한 이름을 입력하시오.");
+                name.select();
+                return false;
+            }
         }
     </script>
 </body>
