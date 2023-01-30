@@ -112,6 +112,10 @@
             //  {} : 객체
             // 부여하고자하는 스타일에 대해서 객체형태로 데이터 전달
 
+            // attr함수는 속성임(attribute)
+            // attr은 img태그에서 src를 조작할때 혹은 인라인스타일조작할때 사용
+            // 그외는 prop사용
+            // attr함수는 반환값이 무조건 문자열임
             $(":checkbox").attr("checked", true);
 
             // 첨부파일 : 배경색을 연두색으로
@@ -155,7 +159,170 @@
         // 첫번째 매개변수는 mouseenter이벤트에 대한 콜백함수(이벤트핸들러)
         // 두번째 매개변수는 mouseout이벤트에 대한 콜백함수(이벤트핸들러)
         // 콜백(callback) : 응답받기를 기다리다.
+
+        /*
+            2023.01.30 추가주석
+            attr()함수는 html속성중 img태그의 src, table태그의 rowspan, colspan, a태그의 href속성,
+            인라인 style속성의 값을 변경해줄때 사용하는걸 권장한다.(반드시 명시적으로 속성명, 속성값을
+            작성해줘야하는 요소에 한해서)
+
+            그외에는 prop()함수 사용(checked, selected, disabled, enabled 등)
+        */
     </script>
-    <br><br><br><br><br>
+
+<br>
+<hr>
+
+<h3>* 입력양식 선택자 (input 태그의 type 속성에 따라서도 요소 선택)</h3>
+<p>
+    :type속성값으로 표기
+</p>
+
+텍스트상자 : <input type="text" name="" id=""> <br>
+일반버튼   : <input type="button" value=""> <br>
+체크박스   : <input type="checkbox" name="" id=""><br>
+첨부파일   : <input type="file" name="" id=""> <br>
+비밀번호   : <input type="password" name="" id=""><br>
+라디오버튼 : <input type="radio" name="" id=""><br>
+초기화버튼 : <input type="reset" value="리셋버튼"><br>
+제출  버튼 : <input type="submit" value=""><br>
+
+<script>
+    $(function(){
+        // $(":text").css("background","red");
+
+        // //$(":button").css("width","200px").css("height","200px")
+        // $(":button").css({width: "200px", height:"200px"}).val("왕버튼");
+        // //부여하고자하는 스타일에 대해서 객체형태로 데이터 전달
+
+        // $(":checkbox").attr("checked",true);
+
+        // // 첨부파일 : 배경색을 연두색으로
+        // $(":file").css("background","yellowgreen");
+        // // 비밀번호 : 배경색을 노란색으로
+        // $(":password").css("backgroundColor","yellow");
+        // // 라디오버튼 : checked속성 추가, 가로길이50px, 세로길이 50px
+        // //             (메소드 체이닝 이용, css데이터는 객체형태로 전달)
+        // $(":radio").attr("checked",true).css({width:"50px", height:"50px"});
+        // // 초기화버튼 : 배경색은 파란색, 글자색은 흰색, 테두리 없애기
+        // $(":reset").css({
+        //     background : "blue",
+        //     color      : "white",
+        //     border     : "none"
+        // });
+        // // 제출버튼   : 클릭시 alert창으로 ㅋㅋ메세지가 출력되도록
+        // $(":submit").click(function(){
+        //     //alert("ㅋㅋㅋㅋ");
+
+        //     // 비밀번호 입력란 안에 있는 값(value)을 출력해서 알람으로 띄우기
+        //     alert($(":password").val());
+        //     //.val() 함수의 경우 매개변수 없이 호출하면 값을 불러오는역할(getter)
+        //     //                  매개변수를 넣어주게되면 값을 저장하는 역할(setter)
+        // });
+
+        // mouseenter : 선택된 요소의 경계 내부로 마우스가 들어가는순간 발생하는 이벤트
+        // $(":submit").mouseenter(function(){
+        //     $(this).addClass("pinkStyle");
+        //     // .addClass() : 선택된 요소에 클래스를 추가해주는 메소드
+        // })
+
+        // // mouseout : 선택된 요소의 경계 밖으로 마우스가 나가는 순간 발생하는 이벤트
+        // $(":submit").mouseout(function(){
+        //     $(this).removeClass("pinkStyle");
+        //     // .removeClass() : 선택된 요소에 클래스를 제거해주는 메소드
+        // })
+
+        // hover : mouseenter + mouseout
+        $(":submit").hover( function(){
+            $(this).addClass("pinkStyle");
+        }  , function (){
+            $(this).removeClass("pinkStyle");
+        });
+        // 첫번째 매개변수는 mouseenter이벤트에 대한 콜백함수(이벤트핸들러)
+        // 두번째 매개변수는 mouseout이벤트에 대한 콜백함수(이벤트핸들러)
+        // 콜백(callback): 응답받기를 기다리다.
+    })
+</script>
+
+<br>
+<hr>
+
+<h3>* 상태(checked , selected, disabled, enabled) 선택자</h3>
+<h4>- checked 상태 선택자 (radio, checkbox)</h4>
+<p>
+    체크되어 있는 입력 양식을 선택 <br>
+    input:checked
+</p>
+
+취미 : 
+<input type="checkbox" name="hobby" value="game"> 게임
+<input type="checkbox" name="hobby" value="movie"> 영화
+<input type="checkbox" name="hobby" value="music"> 음악 <br>
+
+<!-- <button type="button" id="btn">실행확인</button> -->
+
+<script>
+
+    $(function(){
+
+        //버튼 클릭시 현재 checked 상태인 요소를 선택해서 스타일 부여
+        // $("#btn").click(function(){
+        //     $("input:checked").css({width:"50px" , height:"50px"});
+        // });
+
+        //checkbox인 요소들에 change이벤트 부여
+        $(":checkbox").change(function(){
+
+            // prop 함수는 속성임(prompt). 해당요소를 선택했을때 
+            //내부적으로 숨어있는(눈에보이지않는) 값을 변경하기위해 사용
+           if($(this).prop("checked") ){ // if( this.checked )
+              $(this).css({width:"50px", height:"50px"});
+           }else{
+              $(this).css({width:"",height:""}); 
+           } 
+        });
+
+    });
+</script>    
+
+
+<h4>- selected 상태선택자(select>option)</h4>
+<p>
+    option 객체중 선택된 태그를 선택<br>
+    option:selected
+</p>
+
+국가 : 
+<select name="national">
+    <option value="x">선택안함</option>
+    <option value="ko">한국</option>
+    <option value="us">미국</option>
+    <option value="eu">영국</option>
+</select>
+
+<button onclick="test();">확인</button> <br>
+
+선택한 나라 : <label id="result">선택안함</label>
+
+<script>
+    function test(){
+        //현재 선택 되어있는 목록값 가져옴
+        //console.log($("option:selected").html());
+
+        $("#result").html($("option:selected").html());
+        //document.getElementById("result").innerHTML = 현재선택된option태그.innerHTML;
+        //현재선택된option태그 == document.querySelector("option:selected")
+    }
+    $(function(){
+        // change() : 바뀐값 체크하는 함수
+        $("select").change(function(){
+            $("#result").html($("option:selected").html());
+        })
+    });
+    // 버튼을 클릭하지 않고 select박스 선택된 값이 바뀌었을때
+    // 라벨안쪽에 자동으로 한국,미국, 선택안함,영국 값들이 바뀌도록 이벤트부여
+</script>
+
+<br><br><br><br><br>
 </body>
 </html>
