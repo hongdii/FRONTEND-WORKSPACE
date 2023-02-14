@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <style>
+        #f{
+            border: 1px solid gray;
+            background-color: lightgrey;
+            margin: auto;
+            width: 500px;
+            height: 300px;
+        }
+        #sBtn{
+            border: none;
+            background-color: darkseagreen;
+            width: 400px;
+            cursor: pointer;
+        }
+        input{
+            margin-left: 50px;
+            border: none;
+            background-color: lightgrey;
+            border-bottom: 1px dashed black;
+        }
+        body{
+            background-color: lightblue;
+        }
+        #sBtn{
+            margin-top: 25px;
+            font-weight: 900;
+            margin-left: 50px;
+            height: 50px;
+        }
+        #em, #em2{
+            width: 100px;
+        }
+        #em2{
+            margin-left: 0px;
+        }
+        label{
+            color: gray;
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form action="" id="f">
+        아이디<input id="id" class="rqIp" required> <br><br>
+        <label class="re"></label>
+        패스워드 <input id="pwd" class="rqIp" type="password" required> <br>
+        <label id="pwdLa" class="re"></label>  <br>
+        패스워드 확인 <input id="pwdCheck" class="rqIp" type="password" required> <br><br>
+        <label class="re"></label>
+        이메일 <input id="em">@<input id="em2"> <br><br>
+        주소 <input id="address"> <br><br>
+
+        <button id="sBtn" type="submit">가입
+    </form>
+
+    <script>
+        
+        
+        document.getElementById("pwd").addEventListener("click", function(){
+            document.getElementById("pwdLa").innerHTML = "영문자 대/소문자 특수문자, 숫자 포함 8 ~ 32자";
+        });
+
+        document.getElementById("pwd").addEventListener("mousemove", function(){
+            document.getElementById("pwdLa").innerHTML = "";        
+        });
+
+        let re = document.getElementsByClassName("re");
+
+        if(!re.value){
+            re.innerHTML = "필수 입력 사항입니다.";
+            document.getElementsByClassName("rqIp").select();
+        } 
+    </script>
+</body>
+</html>
